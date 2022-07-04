@@ -8,9 +8,11 @@ import subprocess
 import time
 import locale
 import configparser
+import numpy as np
 import pandas as pd
 from decimal import Decimal
 from util import Utilty
+
 
 # Type of printing.
 OK = 'ok'         # [*]
@@ -280,7 +282,7 @@ class GeneticAlgorithm:
                 fits = [_.getEvaluation() for _ in current_generation]
 
                 # evaluate evolution result.
-                flt_avg = sum(fits) / float(len(fits))
+                flt_avg = np.mean(fits)
                 self.util.print_message(NOTE, '{} generation result: '
                                               'Min={}, Max={}, Avg={}.'.format(int_count,
                                                                                min(fits),
